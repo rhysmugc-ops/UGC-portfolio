@@ -1,0 +1,1525 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhys · UGC Creator</title>
+<meta name="description" content="Rhys is a UGC creator producing short-form video content for brands - product content, campaign content, and aerial/drone work.">
+<meta property="og:title" content="Rhys · UGC Creator">
+<meta property="og:description" content="UGC video content for brands - product content, campaign content, and aerial/drone work.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzMiAzMic+PHJlY3Qgd2lkdGg9JzMyJyBoZWlnaHQ9JzMyJyByeD0nNycgZmlsbD0nIzFCMUYxQicvPjx0ZXh0IHg9JzE2JyB5PScyMycgZm9udC1mYW1pbHk9J0dlb3JnaWEsIHNlcmlmJyBmb250LXN0eWxlPSdpdGFsaWMnIGZvbnQtc2l6ZT0nMTknIGZpbGw9JyNFOEEzM0QnIHRleHQtYW5jaG9yPSdtaWRkbGUnPlI8L3RleHQ+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1B1F1B;
+    --paper: #EDEAE2;
+    --amber: #E8A33D;
+    --sage: #8A9A8B;
+    --green: #6FBF73;
+    --line: rgba(237,234,226,0.14);
+    --max: 1080px;
+    --header-h: 64px;
+  }
+ 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+  html { scroll-padding-top: var(--header-h); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+ 
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+ 
+  h1, h2, h3 {
+    font-family: 'Inter', sans-serif;
+  }
+ 
+  a { color: inherit; }
+ 
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+ 
+  /* NAV */
+  header {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: min(calc(100% - 32px), var(--max));
+    background: rgba(47,53,47,0.25);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  }
+ 
+  nav.wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+ 
+  .logo {
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .logo .name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: var(--paper);
+  }
+
+  .logo .tag-word {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--amber);
+  }
+ 
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+  }
+ 
+  nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--paper);
+    border: 1px solid var(--line);
+    padding: 7px 16px;
+    border-radius: 100px;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+ 
+  nav ul li a:hover, nav ul li a:focus-visible {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(232,163,61,0.08);
+  }
+ 
+  /* STATUS INDICATOR — signature element, nods to a dashboard light */
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--sage);
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    border-radius: 100px;
+  }
+ 
+  .status .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 0 rgba(111,191,115,0.6);
+    animation: pulse 2s infinite;
+  }
+ 
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(111,191,115,0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(111,191,115,0); }
+    100% { box-shadow: 0 0 0 0 rgba(111,191,115,0); }
+  }
+ 
+  @media (prefers-reduced-motion: reduce) {
+    .status .dot { animation: none; }
+  }
+ 
+  /* HERO */
+  .hero {
+    position: relative;
+    height: 160vh;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding-top: var(--header-h);
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+.hero-beam {
+    position: absolute;
+    top: 8%;
+    width: 170px;
+    height: 85%;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(ellipse at center, rgba(232,163,61,0.45) 0%, rgba(232,163,61,0.18) 45%, transparent 75%);
+    border-radius: 50%;
+    filter: blur(30px);
+    mix-blend-mode: screen;
+    opacity: calc(0.35 - var(--p, 1) * 0.2);
+  }
+
+  .hero-beam--left {
+    left: -40px;
+    transform: translateX(calc(var(--p, 1) * -120px)) rotate(-10deg);
+  }
+
+  .hero-beam--right {
+    right: -40px;
+    transform: translateX(calc(var(--p, 1) * 120px)) rotate(10deg);
+  }
+
+    .hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-copy {
+    flex: 1 1 380px;
+    max-width: 480px;
+    position: relative;
+    z-index: 2;
+    transform: scale(calc(1 + 0.5 * (1 - var(--p, 1)))) translateX(calc((1 - var(--p, 1)) * 22%));
+    transform-origin: left center;
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    margin-bottom: 28px;
+  }
+
+  .hero-title .name {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: var(--paper);
+  }
+
+  .hero-title .tag-word {
+    display: block;
+    margin-top: 6px;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--amber);
+    transform: translateX(clamp(28px, 5vw, 56px));
+    text-shadow: 0 4px 20px rgba(0,0,0,0.55);
+  }
+
+  .hero-actions {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-copy .status { margin-bottom: 28px; }
+
+  .hero-video {
+    flex: 0 0 auto;
+    width: min(300px, 32vw);
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    opacity: var(--p, 1);
+    transform: rotate(-2.5deg) scale(calc(0.6 + 0.4 * var(--p, 1)));
+    box-shadow: 0 8px 16px -6px rgba(0,0,0,0.5), 0 4px 8px -4px rgba(0,0,0,0.35);
+  }
+
+  .hero-video video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sound-toggle {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    background: rgba(27,31,27,0.6);
+    border: 1px solid var(--line);
+    color: var(--paper);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    cursor: pointer;
+    z-index: 2;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+  }
+
+  .sound-toggle:hover, .sound-toggle:focus-visible { border-color: var(--amber); color: var(--amber); }
+
+  .hero-about-cue {
+    position: relative;
+    display: inline-block;
+    align-self: center;
+    color: var(--amber);
+    text-decoration: none;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    z-index: 0;
+    padding-left: 60px;
+    transition: color 0.2s ease;
+  }
+
+  .hero-about-cue::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    width: 90px;
+    height: 1px;
+    background: var(--amber);
+    transform-origin: left center;
+    transform: translateY(-50%) scaleX(clamp(0, calc((var(--p, 1) - 0.6) / 0.25), 1));
+  }
+
+  .hero-about-cue:hover, .hero-about-cue:focus-visible { color: var(--paper); }
+
+  .hero-about-text {
+    display: inline-block;
+    opacity: clamp(0, calc((var(--p, 1) - 0.85) / 0.15), 1);
+    transform: scale(clamp(0.6, calc(0.6 + (var(--p, 1) - 0.85) / 0.15 * 0.4), 1));
+  }
+
+  .sound-toggle[data-on="true"] { border-color: var(--amber); color: var(--amber); }
+
+  .scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 28px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    opacity: calc(1 - var(--p, 1));
+    pointer-events: none;
+  }
+
+  .scroll-cue .chevron {
+    width: 10px;
+    height: 10px;
+    border-right: 1px solid var(--amber);
+    border-bottom: 1px solid var(--amber);
+    transform: rotate(45deg);
+    animation: bob 1.6s ease-in-out infinite;
+  }
+
+  @keyframes bob {
+    0%, 100% { transform: rotate(45deg) translate(0, 0); }
+    50% { transform: rotate(45deg) translate(3px, 3px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-cue .chevron { animation: none; }
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 26px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--amber);
+    color: var(--ink);
+  }
+
+  .btn-primary:hover, .btn-primary:focus-visible { transform: translateY(-2px); }
+
+  .btn-ghost {
+    border: 1px solid var(--line);
+    color: var(--paper);
+  }
+
+  .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--amber); color: var(--amber); }
+
+  @media (max-width: 860px) {
+    .hero { height: auto; }
+    .hero-sticky { position: static; height: auto; padding-top: calc(var(--header-h) + 32px); padding-bottom: 32px; }
+    .hero-inner { flex-direction: column; align-items: flex-start; gap: 40px; }
+    .hero-copy { transform: none; max-width: 100%; }
+    .hero-title .tag-word { transform: none; }
+    .hero-video { width: min(280px, 70vw); align-self: center; opacity: 1; transform: none; box-shadow: none; }
+    .hero-about-cue { display: none; }
+    .scroll-cue { display: none; }
+    .hero-beam { display: none; }
+  }
+/* BRAND MARQUEE */
+  .marquee-section {
+    position: relative;
+    padding: 48px 0;
+    background: #262C26;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .marquee-section::before,
+  .marquee-section::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(85%, 800px);
+    height: 36px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.22) 45%, transparent 75%);
+    border-radius: 50%;
+    filter: blur(12px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .marquee-section::before { top: -18px; }
+  .marquee-section::after { bottom: -18px; }
+
+  .marquee-label {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.78rem;
+    color: var(--sage);
+    margin-bottom: 28px;
+  }
+
+  .marquee-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: max-content;
+  }
+
+  .marquee-track--left {
+    animation: marqueeScroll 60s linear infinite;
+  }
+
+  .marquee-track--right {
+    animation: marqueeScrollReverse 60s linear infinite;
+  }
+
+  .brand-logo {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 84px;
+    padding: 0 30px;
+    background: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    transition: border-color 0.2s ease;
+  }
+
+  .brand-logo:hover {
+    border-color: var(--amber);
+  }
+
+  /* Per-logo tile backgrounds, sampled from each image's own edge color for a seamless blend */
+  .brand-logo:has(img[src*="reformed"]) { background: #F3EEE8; }
+  .brand-logo:has(img[src*="voucher-codes"]) { background: #FFE019; }
+  .brand-logo:has(img[src*="scandi-bio-labs"]) { background: #EDEDE3; }
+  .brand-logo:has(img[src*="voy"]) { background: #F0E5C0; }
+  .brand-logo:has(img[src*="eon-next"]) { background: #FAF6F4; }
+  .brand-logo:has(img[src*="tonic"]) { background: #000000; }
+  .brand-logo:has(img[src*="yps"]) { background: #00DA98; }
+  .brand-logo:has(img[src*="the-bell-inn"]) { background: #A0C6D3; }
+
+  .brand-logo img {
+    display: block;
+    max-height: 40px;
+    max-width: 170px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: none;
+    opacity: 1;
+    transition: filter 0.2s ease, opacity 0.2s ease;
+  }
+
+  /* The square/icon-mark logos read smaller than the wordmarks at equal height, so give them more room */
+  .brand-logo img[src*="myjobquote"],
+  .brand-logo img[src*="vonhaus"],
+  .brand-logo img[src*="betterman"],
+  .brand-logo img[src*="rheal"],
+  .brand-logo img[src*="voy"],
+  .brand-logo img[src*="mainline"],
+  .brand-logo img[src*="noted"],
+  .brand-logo img[src*="eon-next"],
+  .brand-logo img[src*="scandi-bio-labs"],
+  .brand-logo img[src*="tonic"] {
+    max-height: 52px;
+  }
+
+
+
+  @keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes marqueeScrollReverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { overflow-x: auto; }
+    .marquee-track { animation: none; }
+  }
+/* SECTION LABEL */
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.78rem;
+    color: var(--amber);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+ 
+  section { padding: 90px 0; border-bottom: 1px solid var(--line); }
+ 
+  section h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+
+  .accent-word {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: #C58B34;
+  }
+ 
+  /* VIDEO CAROUSEL */
+  .carousel-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .more-videos {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    max-height: 150px;
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.6s ease;
+  }
+
+  .more-videos::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 130px;
+    background: linear-gradient(to bottom, transparent, var(--ink) 85%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .more-videos.is-expanded::after {
+    opacity: 0;
+  }
+
+  .show-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: -36px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .show-more-btn {
+    background: rgba(27,31,27,0.85);
+    border: 1px solid var(--line);
+    color: var(--paper);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    padding: 10px 24px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .show-more-btn:hover, .show-more-btn:focus-visible {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .more-videos { transition: none; }
+  }
+
+  .carousel {
+    position: relative;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0%, #000 90%, transparent 100%);
+  }
+
+  .carousel-track::-webkit-scrollbar { display: none; }
+
+  .carousel-arrow {
+    position: absolute;
+    top: calc(50% - 20px);
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: rgba(27,31,27,0.85);
+    color: var(--paper);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .carousel-arrow:hover, .carousel-arrow:focus-visible {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+
+  .carousel-arrow--prev { left: -8px; }
+  .carousel-arrow--next { right: -8px; }
+
+  .carousel-more {
+    position: absolute;
+    bottom: 18px;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .carousel-more span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--amber);
+  }
+
+  .carousel-more span:nth-child(1) { opacity: 0.9; }
+  .carousel-more span:nth-child(2) { opacity: 0.6; }
+  .carousel-more span:nth-child(3) { opacity: 0.35; }
+
+  @media (max-width: 720px) {
+    .carousel-arrow { display: none; }
+  }
+
+  .video-card {
+    scroll-snap-align: start;
+    flex: 0 0 240px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px;
+    background: rgba(237,234,226,0.03);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .video-card:hover { border-color: var(--amber); transform: translateY(-3px); }
+
+  .video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #14180f;
+  }
+
+  .video-frame video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-card .tag {
+    font-size: 0.75rem;
+    color: var(--sage);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 16px;
+  }
+
+  .video-frame h3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    margin: 0;
+    padding: 10px 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--paper);
+    text-align: center;
+    background: rgba(47,53,47,0.1);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    border-radius: 6px 6px 0 0;
+    transition: transform 0.3s ease;
+    transform: translateY(0);
+  }
+
+  .video-card:hover .video-frame h3 {
+    transform: translateY(-100%);
+  }
+
+  .video-card p {
+    margin-top: 8px;
+    color: var(--sage);
+    font-size: 0.9rem;
+  }
+/* PORTFOLIO GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+ 
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 28px;
+    background: rgba(237,234,226,0.03);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+ 
+  .card:hover { border-color: var(--amber); transform: translateY(-3px); }
+ 
+  .card .tag {
+    font-size: 0.75rem;
+    color: var(--sage);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+ 
+  .card h3 {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+ 
+  .card p {
+    margin-top: 10px;
+    color: var(--sage);
+    font-size: 0.92rem;
+  }
+ 
+  .kit-icon {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(232,163,61,0.06);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    color: var(--amber);
+  }
+
+  .kit-icon svg {
+    width: 34%;
+    height: 34%;
+  }
+
+  #kit .grid {
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px;
+  }
+
+  #kit .card {
+    padding: 18px;
+  }
+
+  #kit .kit-icon {
+    margin-bottom: 12px;
+  }
+
+  #kit .card h3 {
+    font-size: 1.02rem;
+    margin-top: 6px;
+  }
+
+  #kit .card p {
+    font-size: 0.82rem;
+    margin-top: 6px;
+  }
+
+  /* ABOUT */
+  #about { position: relative; }
+
+  #about .wrap { position: relative; z-index: 1; }
+
+  .about-fracture {
+    position: absolute;
+    width: 70px;
+    height: 45%;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(ellipse at center, rgba(232,163,61,0.35) 0%, rgba(232,163,61,0.14) 45%, transparent 75%);
+    border-radius: 50%;
+    filter: blur(20px);
+    mix-blend-mode: screen;
+    opacity: 0.6;
+  }
+
+  .about-fracture--a { top: -5%; left: 8%; transform: rotate(-12deg); }
+  .about-fracture--b { bottom: -8%; right: 12%; transform: rotate(15deg); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+ 
+  .about-copy p { color: var(--sage); margin-bottom: 16px; max-width: 46ch; }
+
+  .about-copy p strong { color: var(--paper); }
+
+  .about-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .about-highlights li {
+    position: relative;
+    padding-left: 20px;
+    color: var(--sage);
+    font-size: 0.92rem;
+    max-width: 46ch;
+  }
+
+  .about-highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+  }
+
+  .about-highlights li strong {
+    color: var(--paper);
+    font-weight: 600;
+  }
+ 
+  @media (max-width: 720px) {
+    .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+ 
+  /* CONTACT */
+  #contact { border-bottom: none; position: relative; }
+
+  #contact p { color: var(--sage); max-width: 480px; margin-bottom: 32px; margin-left: auto; margin-right: auto; }
+
+  .contact-glow {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(90%, 900px);
+    height: 200px;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(ellipse at center, rgba(232,163,61,0.3) 0%, rgba(232,163,61,0.12) 45%, transparent 75%);
+    border-radius: 50%;
+    filter: blur(30px);
+    mix-blend-mode: screen;
+    opacity: 0.5;
+  }
+
+  .contact-box {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    background: rgba(47,53,47,0.95);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    backdrop-filter: blur(8px);
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .contact-box { padding: 32px 24px; }
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 560px;
+    margin: 0 auto 24px;
+    text-align: left;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1 1 200px;
+  }
+
+  .form-field label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sage);
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: rgba(237,234,226,0.03);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: var(--paper);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-field textarea { resize: vertical; min-height: 120px; }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--amber);
+  }
+
+  .contact-alt { font-size: 1.2rem; color: var(--paper); font-weight: 500; margin-bottom: 24px; }
+  .contact-alt a { color: var(--amber); text-decoration: none; }
+  .contact-alt a:hover { text-decoration: underline; }
+ 
+  footer {
+    padding: 32px 0;
+    font-size: 0.85rem;
+    color: var(--sage);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+ 
+  footer a { text-decoration: none; color: var(--sage); }
+  footer a:hover { color: var(--amber); }
+</style>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="name">RHYS MILES</span> <span class="tag-word">UGC</span></div>
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#kit">My Kit</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+ 
+<section class="hero" id="top">
+  <div class="hero-sticky">
+    <div class="hero-beam hero-beam--left" aria-hidden="true"></div>
+    <div class="hero-beam hero-beam--right" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">Welcome to my portfolio</div>
+        <h1 class="hero-title" aria-label="UGC by Rhys"><span class="name">UGC</span><span class="tag-word">by Rhys</span></h1>
+        <div class="hero-actions">
+          <div class="status"><span class="dot"></span> Available for projects</div>
+          <div class="cta-row">
+            <a href="#work" class="btn btn-primary">See the work</a>
+            <a href="#contact" class="btn btn-ghost">Start a project</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-video">
+        <video id="heroVideo" src="assets/videos/hero-intro.mp4" autoplay muted loop playsinline></video>
+        <button class="sound-toggle" type="button" data-on="false" aria-pressed="false">Tap for sound</button>
+      </div>
+      <a class="hero-about-cue" href="#about"><span class="hero-about-text">About me</span></a>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">
+      <span>Scroll to meet me</span>
+      <span class="chevron"></span>
+    </div>
+  </div>
+</section>
+<section class="marquee-section">
+  <div class="marquee-label">Trusted by these brands +more</div>
+  <div class="marquee-rows">
+    <div class="marquee">
+      <div class="marquee-track marquee-track--left">
+      <span class="brand-logo"><img src="assets/logos/macmillan.png" alt="Macmillan Cancer Support" width="3840" height="2160" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/voy.jpg" alt="Voy" width="225" height="225" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/comma-football.png" alt="Comma Football" width="517" height="145" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/holy.png" alt="Holy" width="1078" height="590" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/myjobquote.png" alt="MyJobQuote" width="180" height="180" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/reformed.png" alt="Reformed" width="1240" height="800" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/tonic.png" alt="Tonic" width="725" height="724" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/vonhaus.png" alt="VonHaus" width="447" height="447" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/betterman.jpg" alt="Betterman" width="447" height="447" loading="lazy"></span>
+      <div aria-hidden="true" style="display:contents">
+      <span class="brand-logo"><img src="assets/logos/macmillan.png" alt="Macmillan Cancer Support" width="3840" height="2160" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/voy.jpg" alt="Voy" width="225" height="225" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/comma-football.png" alt="Comma Football" width="517" height="145" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/holy.png" alt="Holy" width="1078" height="590" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/myjobquote.png" alt="MyJobQuote" width="180" height="180" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/reformed.png" alt="Reformed" width="1240" height="800" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/tonic.png" alt="Tonic" width="725" height="724" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/vonhaus.png" alt="VonHaus" width="447" height="447" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/betterman.jpg" alt="Betterman" width="447" height="447" loading="lazy"></span>
+      </div>
+      </div>
+    </div>
+    <div class="marquee">
+      <div class="marquee-track marquee-track--right">
+      <span class="brand-logo"><img src="assets/logos/scandi-bio-labs.png" alt="Scandinavian Biolabs" width="447" height="447" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/biofit.png" alt="Biofit" width="1080" height="400" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/eon-next.png" alt="Eon Next" width="447" height="447" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/jnb.jpg" alt="JNB" width="700" height="509" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/mainline.png" alt="Mainline" width="256" height="256" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/noted.png" alt="Noted" width="750" height="750" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/the-bell-inn.jpg" alt="The Bell Inn" width="225" height="225" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/rheal.jpg" alt="Rheal" width="280" height="280" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/voucher-codes.png" alt="Voucher Codes" width="400" height="300" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/grass-and-co.jpg" alt="Grass and Co" width="200" height="200" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/yps.png" alt="YPS" width="300" height="157" loading="lazy"></span>
+      <div aria-hidden="true" style="display:contents">
+      <span class="brand-logo"><img src="assets/logos/scandi-bio-labs.png" alt="Scandinavian Biolabs" width="447" height="447" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/biofit.png" alt="Biofit" width="1080" height="400" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/eon-next.png" alt="Eon Next" width="447" height="447" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/jnb.jpg" alt="JNB" width="700" height="509" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/mainline.png" alt="Mainline" width="256" height="256" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/noted.png" alt="Noted" width="750" height="750" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/the-bell-inn.jpg" alt="The Bell Inn" width="225" height="225" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/rheal.jpg" alt="Rheal" width="280" height="280" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/voucher-codes.png" alt="Voucher Codes" width="400" height="300" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/grass-and-co.jpg" alt="Grass and Co" width="200" height="200" loading="lazy"></span>
+      <span class="brand-logo"><img src="assets/logos/yps.png" alt="YPS" width="300" height="157" loading="lazy"></span>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow">Selected work</div>
+    <h2>Recent <span class="accent-word">projects</span>.</h2>
+    <div class="carousel-rows">
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/macmillan-cancer-support.mp4" controls preload="metadata" playsinline></video>
+            <h3>Macmillan</h3>
+          </div>
+          <div class="tag">Charity</div>
+          <p>Fundraising content.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/scandi-bio.mp4" controls preload="metadata" playsinline></video>
+            <h3>Scandinavian Biolabs</h3>
+          </div>
+          <div class="tag">Health &amp; beauty</div>
+          <p>Product content.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/mainline.mp4" controls preload="metadata" playsinline></video>
+            <h3>Mainline Menswear</h3>
+          </div>
+          <div class="tag">Brand content</div>
+          <p>Product content.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/yps.mp4" controls preload="metadata" playsinline></video>
+            <h3>YourParkingSpace</h3>
+          </div>
+          <div class="tag">Brand content</div>
+          <p>Campaign content.</p>
+        </div>
+      </div>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/nutrition-geeks.mp4" controls preload="metadata" playsinline></video>
+            <h3>Nutrition Geeks</h3>
+          </div>
+          <div class="tag">Health &amp; nutrition</div>
+          <p>Product content.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/bes.mp4" controls preload="metadata" playsinline></video>
+            <h3>BES</h3>
+          </div>
+          <div class="tag">Brand content</div>
+          <p>Campaign content.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/voucher-codes.mp4" controls preload="metadata" playsinline></video>
+            <h3>Voucher Codes</h3>
+          </div>
+          <div class="tag">Brand content</div>
+          <p>Campaign content.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/rheal.mp4" controls preload="metadata" playsinline></video>
+            <h3>Rheal</h3>
+          </div>
+          <div class="tag">Health &amp; wellness</div>
+          <p>Product content.</p>
+        </div>
+      </div>
+      <div class="more-videos" id="moreVideos">
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/myjobquote.mp4" controls preload="metadata" playsinline></video>
+            <h3>MyJobQuote</h3>
+          </div>
+          <div class="tag">Brand content</div>
+          <p>Product content.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/tonic.mp4" controls preload="metadata" playsinline></video>
+            <h3>Tonic</h3>
+          </div>
+          <div class="tag">Brand content</div>
+          <p>Product content.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/reformed-coffee.mp4" controls preload="metadata" playsinline></video>
+            <h3>Reformed</h3>
+          </div>
+          <div class="tag">Food &amp; drink</div>
+          <p>Product content.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/face-to-camera-car.mp4" controls preload="metadata" playsinline></video>
+            <h3>Face to camera</h3>
+          </div>
+          <div class="tag">Format</div>
+          <p>Talking-head, filmed in the car.</p>
+        </div>
+      </div>
+      <div class="carousel">
+        <button class="carousel-arrow carousel-arrow--prev" type="button" aria-label="Scroll to previous videos">&#8249;</button>
+        <div class="carousel-track">
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/voy.mp4" controls preload="metadata" playsinline></video>
+            <h3>Voy</h3>
+          </div>
+          <div class="tag">Health &amp; wellness</div>
+          <p>Weight loss care plan content.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/voy-3.mp4" controls preload="metadata" playsinline></video>
+            <h3>Voy</h3>
+          </div>
+          <div class="tag">Health &amp; wellness</div>
+          <p>Campaign content, part three.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/voy-4.mp4" controls preload="metadata" playsinline></video>
+            <h3>Voy</h3>
+          </div>
+          <div class="tag">Health &amp; wellness</div>
+          <p>Campaign content, part four.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/voy-5.mp4" controls preload="metadata" playsinline></video>
+            <h3>Voy</h3>
+          </div>
+          <div class="tag">Health &amp; wellness</div>
+          <p>Campaign content, part five.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/voy-6.mp4" controls preload="metadata" playsinline></video>
+            <h3>Voy</h3>
+          </div>
+          <div class="tag">Health &amp; wellness</div>
+          <p>Campaign content, part six.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/voy-7.mp4" controls preload="metadata" playsinline></video>
+            <h3>Voy</h3>
+          </div>
+          <div class="tag">Health &amp; wellness</div>
+          <p>Campaign content, part seven.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/voy-8.mp4" controls preload="metadata" playsinline></video>
+            <h3>Voy</h3>
+          </div>
+          <div class="tag">Health &amp; wellness</div>
+          <p>Campaign content, part eight.</p>
+        </div>
+        <div class="video-card">
+          <div class="video-frame">
+            <video src="assets/videos/voy-9.mp4" controls preload="metadata" playsinline></video>
+            <h3>Voy</h3>
+          </div>
+          <div class="tag">Health &amp; wellness</div>
+          <p>Campaign content, part nine.</p>
+        </div>
+        </div>
+        <button class="carousel-arrow carousel-arrow--next" type="button" aria-label="Scroll to next videos">&#8250;</button>
+        <div class="carousel-more" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+      </div>
+      <div class="show-more-wrap">
+        <button class="show-more-btn" type="button" aria-expanded="false" aria-controls="moreVideos">+ More</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="about">
+  <div class="about-fracture about-fracture--a" aria-hidden="true"></div>
+  <div class="about-fracture about-fracture--b" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2>From the forecourt to the feed.</h2>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p><strong>32</strong>, based in <strong>Warwickshire / Stratford-upon-Avon</strong>. If I'm not <strong>filming and editing</strong>, I'm in the gym, playing <strong>golf</strong>, or reading some sort of <strong>sci-fi fantasy</strong> book.</p>
+        <p>At home, my <strong>partner</strong> is well established in UGC too, having worked with <strong>100+ brands</strong>, and together we've got a <strong>6-year-old daughter</strong> who loves helping out on shoots.</p>
+        <p>I spent years in <strong>car sales</strong>, reading a room in the first ten seconds and knowing exactly what to say next. Turns out that's the same job as writing a hook that stops someone scrolling.</p>
+        <p>Now I write and shoot content for brands that need to <strong>sound human</strong>. No corporate voice, no filler, just what a real customer would actually say.</p>
+      </div>
+      <ul class="about-highlights">
+        <li><strong>Social media management</strong> - I run the feeds for four different businesses, so I'm filming and editing most days, brief or not, which keeps me across every trend as it happens.</li>
+        <li><strong>Gym access</strong> - I can film fitness and gym content on location whenever a brief calls for it.</li>
+        <li><strong>Van hire</strong> - happy to hire one for the day for a tradie-style shoot.</li>
+        <li><strong>On-location shoots</strong> - travelling to your site is never an issue.</li>
+        <li><strong>Tidy home setup</strong> - a clean, well-lit space ready for aesthetic, lifestyle-style shots whenever a brief needs one.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="kit">
+  <div class="wrap">
+    <div class="eyebrow">My kit</div>
+    <h2>What I use to create.</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="kit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"></rect><line x1="11" y1="18" x2="13" y2="18"></line></svg>
+        </div>
+        <div class="tag">Camera</div>
+        <h3>Samsung S25 Ultra</h3>
+        <p>Main camera for everything I shoot - sharp enough that most brands can't tell it's not a cinema camera.</p>
+      </div>
+      <div class="card">
+        <div class="kit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"></rect><path d="M5 10a7 7 0 0 0 14 0"></path><line x1="12" y1="17" x2="12" y2="21"></line><line x1="8" y1="21" x2="16" y2="21"></line></svg>
+        </div>
+        <div class="tag">Audio</div>
+        <h3>DJI Mic Mini</h3>
+        <p>Clean, wireless audio wherever I'm filming - no boom pole, no cables, no hassle.</p>
+      </div>
+      <div class="card">
+        <div class="kit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="6" height="6" rx="1"></rect><circle cx="5" cy="5" r="2"></circle><circle cx="19" cy="5" r="2"></circle><circle cx="5" cy="19" r="2"></circle><circle cx="19" cy="19" r="2"></circle><line x1="5" y1="5" x2="9" y2="9"></line><line x1="19" y1="5" x2="15" y2="9"></line><line x1="5" y1="19" x2="9" y2="15"></line><line x1="19" y1="19" x2="15" y2="15"></line></svg>
+        </div>
+        <div class="tag">Aerial</div>
+        <h3>DJI Mini 3</h3>
+        <p>For aerial shots and establishing footage when a brief calls for scale.</p>
+      </div>
+
+      <div class="card">
+        <div class="kit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="11" rx="1"></rect><path d="M2 19h20l-2-4H4l-2 4z"></path></svg>
+        </div>
+        <div class="tag">Editing</div>
+        <h3>Asus Vivobook</h3>
+        <p>Where every clip gets cut and captioned before it ships.</p>
+      </div>
+      <div class="card">
+        <div class="kit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
+        </div>
+        <div class="tag">Software</div>
+        <h3>CapCut Pro</h3>
+        <p>Cuts, captions, sound design - the whole edit lives here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="contact-box">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Let's make something.</h2>
+      <p>Got a brief in mind? Fill in a few details and I'll get back to you within a day.</p>
+      <p class="contact-alt">Contact me directly on <a href="mailto:rhysm.ugc@gmail.com">rhysm.ugc@gmail.com</a></p>
+      <form class="contact-form" action="https://formsubmit.co/rhysm.ugc@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New enquiry from the portfolio site">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px;">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" name="Name" required>
+        </div>
+        <div class="form-field">
+          <label for="contact-email">Email</label>
+          <input type="email" id="contact-email" name="Email" required>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="contact-project">Project type</label>
+        <select id="contact-project" name="Project type">
+          <option>UGC video content</option>
+          <option>Social media management</option>
+          <option>On-site / location shoot</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="contact-message">Tell me about the brief</label>
+        <textarea id="contact-message" name="Message" rows="5" required></textarea>
+      </div>
+        <button type="submit" class="btn btn-primary">Send it over &rarr;</button>
+      </form>
+    </div>
+  </div>
+</section>
+ 
+<footer class="wrap">
+  <span>© 2026 Rhys</span>
+  <a href="mailto:rhysm.ugc@gmail.com">rhysm.ugc@gmail.com</a>
+</footer>
+ 
+<script defer>
+  (function () {
+    var headerEl = document.querySelector('header');
+    var heroEl = document.querySelector('.hero');
+    var heroVideo = document.getElementById('heroVideo');
+    var soundToggle = document.querySelector('.sound-toggle');
+
+    function syncHeaderHeight() {
+      if (!headerEl) return;
+      document.documentElement.style.setProperty('--header-h', headerEl.getBoundingClientRect().bottom + 'px');
+    }
+    syncHeaderHeight();
+    window.addEventListener('resize', syncHeaderHeight);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(syncHeaderHeight);
+    }
+
+    if (soundToggle && heroVideo) {
+      soundToggle.addEventListener('click', function () {
+        var unmuting = heroVideo.muted;
+        heroVideo.muted = !unmuting;
+        if (unmuting) heroVideo.volume = 1;
+        soundToggle.setAttribute('data-on', unmuting ? 'true' : 'false');
+        soundToggle.setAttribute('aria-pressed', unmuting ? 'true' : 'false');
+        soundToggle.textContent = unmuting ? 'Tap to mute' : 'Tap for sound';
+      });
+    }
+
+    document.querySelectorAll('.carousel').forEach(function (carousel) {
+      var track = carousel.querySelector('.carousel-track');
+      var prevBtn = carousel.querySelector('.carousel-arrow--prev');
+      var nextBtn = carousel.querySelector('.carousel-arrow--next');
+      if (!track || !prevBtn || !nextBtn) return;
+
+      function scrollByCard(direction) {
+        var card = track.querySelector('.video-card');
+        var gap = parseFloat(getComputedStyle(track).columnGap) || 24;
+        var amount = (card ? card.offsetWidth : 240) + gap;
+        track.scrollBy({ left: direction * amount, behavior: 'smooth' });
+      }
+
+      prevBtn.addEventListener('click', function () { scrollByCard(-1); });
+      nextBtn.addEventListener('click', function () { scrollByCard(1); });
+    });
+
+    var moreWrap = document.getElementById('moreVideos');
+    var moreBtn = document.querySelector('.show-more-btn');
+    if (moreWrap && moreBtn) {
+      moreWrap.addEventListener('transitionend', function (e) {
+        if (e.target !== moreWrap || e.propertyName !== 'max-height') return;
+        if (moreWrap.classList.contains('is-expanded')) {
+          moreWrap.style.maxHeight = 'none';
+        }
+      });
+
+      moreBtn.addEventListener('click', function () {
+        var expanding = !moreWrap.classList.contains('is-expanded');
+        if (expanding) {
+          moreWrap.classList.add('is-expanded');
+          moreWrap.style.maxHeight = moreWrap.scrollHeight + 'px';
+        } else {
+          moreWrap.style.maxHeight = moreWrap.scrollHeight + 'px';
+          moreWrap.offsetHeight;
+          moreWrap.classList.remove('is-expanded');
+          moreWrap.style.maxHeight = '';
+        }
+        moreBtn.setAttribute('aria-expanded', expanding ? 'true' : 'false');
+        moreBtn.textContent = expanding ? 'Show less' : '+ More';
+      });
+    }
+
+    if (!heroEl) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      heroEl.style.setProperty('--p', 1);
+      return;
+    }
+
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var scrollDistance = heroEl.offsetHeight - window.innerHeight;
+      if (scrollDistance <= 0) return;
+      var scrolled = -heroEl.getBoundingClientRect().top;
+      var p = Math.min(Math.max(scrolled / scrollDistance, 0), 1);
+      heroEl.style.setProperty('--p', p);
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  })();
+</script>
+</body>
+</html>
+ 
