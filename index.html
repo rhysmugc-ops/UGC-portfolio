@@ -1011,6 +1011,17 @@
   footer a { text-decoration: none; color: var(--sage); }
   footer a:hover { color: var(--amber); }
 
+  /* HERO - centred on phones/small tablets (stacked layout only) */
+  @media (max-width: 860px) {
+    .hero-inner { align-items: center; }
+    .hero-copy { text-align: center; margin: 0 auto; transform-origin: center; }
+    .hero-copy .eyebrow { font-size: 0.95rem; margin-bottom: 16px; }
+    .hero-title { font-size: clamp(3.6rem, 18vw, 6rem); }
+    .hero-actions { display: flex; }
+    .hero-copy .status { font-size: 0.9rem; }
+    .cta-row { justify-content: center; }
+  }
+
   /* MOBILE (phones only - desktop unaffected) */
   .nav-toggle { display: none; }
 
