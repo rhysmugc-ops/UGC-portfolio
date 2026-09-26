@@ -1010,12 +1010,67 @@
  
   footer a { text-decoration: none; color: var(--sage); }
   footer a:hover { color: var(--amber); }
+
+  /* MOBILE (phones only - desktop unaffected) */
+  .nav-toggle { display: none; }
+
+  @media (max-width: 720px) {
+    html, body { overflow-x: clip; }
+    #about { overflow-x: clip; }
+
+    /* Hamburger menu */
+    nav.wrap { padding-top: 12px; padding-bottom: 12px; }
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 0 10px;
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 2px;
+      background: var(--paper);
+      border-radius: 2px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    nav.is-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    nav.is-open .nav-toggle span:nth-child(2) { opacity: 0; }
+    nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    nav ul { display: none; width: 100%; flex-direction: column; gap: 8px; padding-top: 4px; }
+    nav.is-open ul { display: flex; }
+    nav ul li a { display: block; text-align: center; }
+    nav.is-open { background: rgba(27,31,27,0.92); border-radius: 16px; }
+
+    /* Recent projects: swipe rows, edge to edge */
+    #work .carousel-track {
+      gap: 14px;
+      margin: 0 -24px;
+      padding: 0 24px 8px;
+      scroll-padding: 0 24px;
+    }
+    #work .carousel-track .video-card { flex: 0 0 64vw; max-width: 260px; }
+    #work .video-card:hover { transform: none; }
+
+    /* Kit: two columns, smaller cards */
+    #kit .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    #kit .card { padding: 12px; }
+    #kit .kit-icon { aspect-ratio: 16 / 10; margin-bottom: 8px; }
+    #kit .card h3 { font-size: 0.92rem; }
+  }
 </style>
 </head>
 <body>
 <header>
   <nav class="wrap">
     <div class="logo"><span class="name">RHYS MILES</span> <span class="tag-word">UGC</span></div>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul>
       <li><a href="#top">Home</a></li>
       <li><a href="#work">Recent Work</a></li>
@@ -1115,183 +1170,179 @@
   <div class="wrap">
     <h2>Recent <span class="accent-word">projects</span>.</h2>
     <div class="carousel-rows">
-      <div class="video-grid">
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/macmillan-cancer-support.mp4" controls preload="metadata" playsinline></video>
-            <h3>Macmillan</h3>
-          </div>
-          <div class="tag">Charity</div>
-          <p>Fundraising content.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/scandi-bio.mp4" controls preload="metadata" playsinline></video>
-            <h3>Scandinavian Biolabs</h3>
-          </div>
-          <div class="tag">Health &amp; beauty</div>
-          <p>Product content.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/mainline.mp4" controls preload="metadata" playsinline></video>
-            <h3>Mainline Menswear</h3>
-          </div>
-          <div class="tag">Brand content</div>
-          <p>Product content.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/yps.mp4" controls preload="metadata" playsinline></video>
-            <h3>YourParkingSpace</h3>
-          </div>
-          <div class="tag">Brand content</div>
-          <p>Campaign content.</p>
-        </div>
-      </div>
-      <div class="video-grid">
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/nutrition-geeks.mp4" controls preload="metadata" playsinline></video>
-            <h3>Nutrition Geeks</h3>
-          </div>
-          <div class="tag">Health &amp; nutrition</div>
-          <p>Product content.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/bes.mp4" controls preload="metadata" playsinline></video>
-            <h3>BES</h3>
-          </div>
-          <div class="tag">Brand content</div>
-          <p>Campaign content.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/voucher-codes.mp4" controls preload="metadata" playsinline></video>
-            <h3>Voucher Codes</h3>
-          </div>
-          <div class="tag">Brand content</div>
-          <p>Campaign content.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/rheal.mp4" controls preload="metadata" playsinline></video>
-            <h3>Rheal</h3>
-          </div>
-          <div class="tag">Health &amp; wellness</div>
-          <p>Product content.</p>
-        </div>
-      </div>
-      <div class="more-videos" id="moreVideos">
-      <div class="video-grid">
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/myjobquote.mp4" controls preload="metadata" playsinline></video>
-            <h3>MyJobQuote</h3>
-          </div>
-          <div class="tag">Brand content</div>
-          <p>Product content.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/tonic.mp4" controls preload="metadata" playsinline></video>
-            <h3>Tonic</h3>
-          </div>
-          <div class="tag">Brand content</div>
-          <p>Product content.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/reformed-coffee.mp4" controls preload="metadata" playsinline></video>
-            <h3>Reformed</h3>
-          </div>
-          <div class="tag">Food &amp; drink</div>
-          <p>Product content.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/face-to-camera-car.mp4" controls preload="metadata" playsinline></video>
-            <h3>Face to camera</h3>
-          </div>
-          <div class="tag">Format</div>
-          <p>Talking-head, filmed in the car.</p>
-        </div>
-      </div>
       <div class="carousel">
-        <button class="carousel-arrow carousel-arrow--prev" type="button" aria-label="Scroll to previous videos">&#8249;</button>
+        <button class="carousel-arrow carousel-arrow--prev" type="button" aria-label="Scroll to previous videos, row 1">&#8249;</button>
         <div class="carousel-track">
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/voy.mp4" controls preload="metadata" playsinline></video>
-            <h3>Voy</h3>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/macmillan-cancer-support.mp4" controls preload="metadata" playsinline></video>
+              <h3>Macmillan</h3>
+            </div>
+            <div class="tag">Charity</div>
+            <p>Fundraising content.</p>
           </div>
-          <div class="tag">Health &amp; wellness</div>
-          <p>Weight loss care plan content.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/voy-3.mp4" controls preload="metadata" playsinline></video>
-            <h3>Voy</h3>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/scandi-bio.mp4" controls preload="metadata" playsinline></video>
+              <h3>Scandinavian Biolabs</h3>
+            </div>
+            <div class="tag">Health &amp; beauty</div>
+            <p>Product content.</p>
           </div>
-          <div class="tag">Health &amp; wellness</div>
-          <p>Campaign content, part three.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/voy-4.mp4" controls preload="metadata" playsinline></video>
-            <h3>Voy</h3>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/mainline.mp4" controls preload="metadata" playsinline></video>
+              <h3>Mainline Menswear</h3>
+            </div>
+            <div class="tag">Brand content</div>
+            <p>Product content.</p>
           </div>
-          <div class="tag">Health &amp; wellness</div>
-          <p>Campaign content, part four.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/voy-5.mp4" controls preload="metadata" playsinline></video>
-            <h3>Voy</h3>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/yps.mp4" controls preload="metadata" playsinline></video>
+              <h3>YourParkingSpace</h3>
+            </div>
+            <div class="tag">Brand content</div>
+            <p>Campaign content.</p>
           </div>
-          <div class="tag">Health &amp; wellness</div>
-          <p>Campaign content, part five.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/voy-6.mp4" controls preload="metadata" playsinline></video>
-            <h3>Voy</h3>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/nutrition-geeks.mp4" controls preload="metadata" playsinline></video>
+              <h3>Nutrition Geeks</h3>
+            </div>
+            <div class="tag">Health &amp; nutrition</div>
+            <p>Product content.</p>
           </div>
-          <div class="tag">Health &amp; wellness</div>
-          <p>Campaign content, part six.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/voy-7.mp4" controls preload="metadata" playsinline></video>
-            <h3>Voy</h3>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/bes.mp4" controls preload="metadata" playsinline></video>
+              <h3>BES</h3>
+            </div>
+            <div class="tag">Brand content</div>
+            <p>Campaign content.</p>
           </div>
-          <div class="tag">Health &amp; wellness</div>
-          <p>Campaign content, part seven.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/voy-8.mp4" controls preload="metadata" playsinline></video>
-            <h3>Voy</h3>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/voucher-codes.mp4" controls preload="metadata" playsinline></video>
+              <h3>Voucher Codes</h3>
+            </div>
+            <div class="tag">Brand content</div>
+            <p>Campaign content.</p>
           </div>
-          <div class="tag">Health &amp; wellness</div>
-          <p>Campaign content, part eight.</p>
-        </div>
-        <div class="video-card">
-          <div class="video-frame">
-            <video src="assets/videos/voy-9.mp4" controls preload="metadata" playsinline></video>
-            <h3>Voy</h3>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/rheal.mp4" controls preload="metadata" playsinline></video>
+              <h3>Rheal</h3>
+            </div>
+            <div class="tag">Health &amp; wellness</div>
+            <p>Product content.</p>
           </div>
-          <div class="tag">Health &amp; wellness</div>
-          <p>Campaign content, part nine.</p>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/myjobquote.mp4" controls preload="metadata" playsinline></video>
+              <h3>MyJobQuote</h3>
+            </div>
+            <div class="tag">Brand content</div>
+            <p>Product content.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/tonic.mp4" controls preload="metadata" playsinline></video>
+              <h3>Tonic</h3>
+            </div>
+            <div class="tag">Brand content</div>
+            <p>Product content.</p>
+          </div>
         </div>
-        </div>
-        <button class="carousel-arrow carousel-arrow--next" type="button" aria-label="Scroll to next videos">&#8250;</button>
+        <button class="carousel-arrow carousel-arrow--next" type="button" aria-label="Scroll to next videos, row 1">&#8250;</button>
         <div class="carousel-more" aria-hidden="true"><span></span><span></span><span></span></div>
       </div>
-      </div>
-      <div class="show-more-wrap">
-        <button class="show-more-btn" type="button" aria-expanded="false" aria-controls="moreVideos">+ More</button>
+      <div class="carousel">
+        <button class="carousel-arrow carousel-arrow--prev" type="button" aria-label="Scroll to previous videos, row 2">&#8249;</button>
+        <div class="carousel-track">
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/reformed-coffee.mp4" controls preload="metadata" playsinline></video>
+              <h3>Reformed</h3>
+            </div>
+            <div class="tag">Food &amp; drink</div>
+            <p>Product content.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/face-to-camera-car.mp4" controls preload="metadata" playsinline></video>
+              <h3>Face to camera</h3>
+            </div>
+            <div class="tag">Format</div>
+            <p>Talking-head, filmed in the car.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/voy.mp4" controls preload="metadata" playsinline></video>
+              <h3>Voy</h3>
+            </div>
+            <div class="tag">Health &amp; wellness</div>
+            <p>Weight loss care plan content.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/voy-3.mp4" controls preload="metadata" playsinline></video>
+              <h3>Voy</h3>
+            </div>
+            <div class="tag">Health &amp; wellness</div>
+            <p>Campaign content, part three.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/voy-4.mp4" controls preload="metadata" playsinline></video>
+              <h3>Voy</h3>
+            </div>
+            <div class="tag">Health &amp; wellness</div>
+            <p>Campaign content, part four.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/voy-5.mp4" controls preload="metadata" playsinline></video>
+              <h3>Voy</h3>
+            </div>
+            <div class="tag">Health &amp; wellness</div>
+            <p>Campaign content, part five.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/voy-6.mp4" controls preload="metadata" playsinline></video>
+              <h3>Voy</h3>
+            </div>
+            <div class="tag">Health &amp; wellness</div>
+            <p>Campaign content, part six.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/voy-7.mp4" controls preload="metadata" playsinline></video>
+              <h3>Voy</h3>
+            </div>
+            <div class="tag">Health &amp; wellness</div>
+            <p>Campaign content, part seven.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/voy-8.mp4" controls preload="metadata" playsinline></video>
+              <h3>Voy</h3>
+            </div>
+            <div class="tag">Health &amp; wellness</div>
+            <p>Campaign content, part eight.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <video src="assets/videos/voy-9.mp4" controls preload="metadata" playsinline></video>
+              <h3>Voy</h3>
+            </div>
+            <div class="tag">Health &amp; wellness</div>
+            <p>Campaign content, part nine.</p>
+          </div>
+        </div>
+        <button class="carousel-arrow carousel-arrow--next" type="button" aria-label="Scroll to next videos, row 2">&#8250;</button>
+        <div class="carousel-more" aria-hidden="true"><span></span><span></span><span></span></div>
       </div>
     </div>
   </div>
@@ -1427,6 +1478,20 @@
     window.addEventListener('resize', syncHeaderHeight);
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(syncHeaderHeight);
+    }
+
+    var navEl = headerEl ? headerEl.querySelector('nav') : null;
+    var navToggle = document.querySelector('.nav-toggle');
+    if (navEl && navToggle) {
+      function setMenu(open) {
+        navEl.classList.toggle('is-open', open);
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+      navToggle.addEventListener('click', function () { setMenu(!navEl.classList.contains('is-open')); });
+      navEl.querySelectorAll('ul a').forEach(function (a) {
+        a.addEventListener('click', function () { setMenu(false); });
+      });
     }
 
     if (soundToggle && heroVideo) {
