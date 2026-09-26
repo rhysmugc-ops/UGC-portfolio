@@ -1024,10 +1024,22 @@
 
   /* MOBILE (phones only - desktop unaffected) */
   .nav-toggle { display: none; }
+  .hero-video-label { display: none; }
 
   @media (max-width: 720px) {
     html, body { overflow-x: clip; }
     #about { overflow-x: clip; }
+
+    /* Small caption above the hero video */
+    .hero-video-label {
+      display: block;
+      margin-bottom: -28px;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      text-align: center;
+    }
 
     /* Hamburger menu */
     nav.wrap { padding-top: 12px; padding-bottom: 12px; }
@@ -1108,6 +1120,7 @@
           </div>
         </div>
       </div>
+      <div class="hero-video-label">Most recent work &darr;</div>
       <div class="hero-video">
         <video id="heroVideo" src="assets/videos/hero-intro.mp4" autoplay muted loop playsinline></video>
         <button class="sound-toggle" type="button" data-on="false" aria-pressed="false">Tap for sound</button>
